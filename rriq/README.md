@@ -17,16 +17,21 @@ RRIQ evaluates despeckling filters by:
 ## Installation
 
 Ensure you have Python 3.11.
-Because `pyradiomics` relies heavily on C-extensions and `numpy`, it is highly recommended to install `numpy` before other dependencies.
+
+**Important note for macOS / ARM64 and environments where `pyradiomics` wheels are not available:**
+`pyradiomics` has a known issue where its `setup.py` attempts to import `numpy` before dependencies are resolved, breaking standard build isolation. To install successfully, you must pre-install build dependencies and use `--no-build-isolation`.
 
 ```bash
 git clone https://github.com/rriq-authors/rriq.git
 cd rriq
 
-# Important: Install numpy before installing the package
-pip install "numpy<2.0"
+# 1. Install build dependencies first
+pip install "numpy<2.0" setuptools wheel cython versioneer
 
-# Now install the project
+# 2. Install pyradiomics with no build isolation
+pip install --no-build-isolation pyradiomics
+
+# 3. Now install the rest of the project
 pip install -e ".[dev]"
 ```
 
@@ -39,6 +44,14 @@ python -m rriq.cli run-all --config configs/default.yaml
 ```
 
 The pipeline will save all logs, parameters, tables, metrics, and plots to `outputs/runs/<timestamp>/`.
+
+## Synthetic Monotonicity Mode
+
+To evaluate how features respond to different levels of multiplicative speckle noise, place a clean reference image in `data/synthetic_clean/` and run:
+
+```bash
+python -m rriq.cli run-synthetic --config configs/default.yaml
+```
 
 ## Folder layout
 
