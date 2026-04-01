@@ -1,0 +1,15 @@
+imageType:
+  Original: {}
+
+setting:
+  normalize: false
+  binWidth: 5.0
+  label: 1
+
+featureClass:
+  firstorder:
+  glcm:
+  glrlm:
+  glszm:
+  gldm:
+  ngtdm:

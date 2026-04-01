@@ -1,0 +1,13 @@
+metrics:
+  enl:
+    enabled: true
+  epd_roa:
+    enabled: true
+  mor:
+    enabled: true
+  tcr:
+    enabled: true
+  rgpi:
+    enabled: true
+  composite:
+    enabled: true

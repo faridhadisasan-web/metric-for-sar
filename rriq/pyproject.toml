@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rriq"
+version = "0.1.0"
+description = "Radiomic Ratio-Image Quality Index for No-Clean-Reference SAR Despeckling Evaluation"
+authors = [{name = "RRIQ Authors"}]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "scikit-image",
+    "scikit-learn",
+    "SimpleITK",
+    "pyradiomics",
+    "matplotlib",
+    "seaborn",
+    "pyyaml",
+    "joblib",
+    "tqdm",
+    "typer",
+    "click",
+    "pyarrow",
+    "rich",
+    "pydantic"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "ruff",
+    "mypy"
+]
+deep = [
+    "torch",
+    "deepdespeckling"
+]
+
+[project.scripts]
+rriq = "rriq.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true

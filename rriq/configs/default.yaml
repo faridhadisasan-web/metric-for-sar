@@ -1,0 +1,64 @@
+pipeline:
+  run_manifest: true
+  run_preprocessing: true
+  run_filters: true
+  run_ratio: true
+  run_masks: true
+  run_radiomics: true
+  run_baselines: true
+  run_rriq: true
+  run_evaluation: true
+  run_report: true
+
+io:
+  input_dir: "data/raw"
+  output_dir: "outputs/runs"
+  coerce_complex_to_magnitude: false
+  reduce_multichannel: "error"
+  eps: 1e-8
+
+preprocessing:
+  normalize: "none"
+  clip_percentiles: [1.0, 99.0]
+  scale_to_255: true
+
+filters:
+  classical:
+    - name: "median"
+      params:
+        size: 3
+    - name: "lee"
+      params:
+        size: 5
+    - name: "kuan"
+      params:
+        size: 5
+    - name: "frost"
+      params:
+        size: 5
+        damp: 1.0
+
+ratio:
+  compute_log_ratio: true
+
+masks:
+  homogeneous:
+    method: "local_cv"
+    threshold: 0.15
+  edges:
+    method: "sobel"
+    threshold: 0.05
+  scatterers:
+    method: "percentile"
+    percentile: 99.5
+
+radiomics:
+  bin_width: 5.0
+  normalize: true
+
+rriq:
+  weights:
+    residual_purity: 0.35
+    structure_preservation: 0.30
+    radiometric_preservation: 0.20
+    scatterer_preservation: 0.15

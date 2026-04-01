@@ -1,0 +1,8 @@
+rriq:
+  mode: "unsupervised" # "unsupervised", "supervised"
+  weights:
+    residual_purity: 0.35
+    structure_preservation: 0.30
+    radiometric_preservation: 0.20
+    scatterer_preservation: 0.15
+  export_path: "models/rriq_formula.json"

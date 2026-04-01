@@ -1,0 +1,17 @@
+imageType:
+  Original: {}
+
+setting:
+  normalize: false
+  # Since we pre-normalize externally to [0, 255], we set normalize to false
+  # and use a fixed bin width for reproducible features
+  binWidth: 5.0
+  label: 1
+
+featureClass:
+  firstorder:
+  glcm:
+  glrlm:
+  glszm:
+  gldm:
+  ngtdm:
