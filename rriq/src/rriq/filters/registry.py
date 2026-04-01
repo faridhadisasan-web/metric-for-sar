@@ -1,7 +1,9 @@
-from typing import Callable, Dict
+import inspect
+from typing import Callable, Dict, Any
+import rriq.filters.classical
+import rriq.filters.wrappers
 
 FILTER_REGISTRY: Dict[str, Callable] = {}
-
 
 def register_filter(name: str):
     """Decorator to register a filtering function in the registry."""
@@ -12,9 +14,12 @@ def register_filter(name: str):
 
     return decorator
 
-
 def get_filter(name: str) -> Callable:
     """Retrieves a filter from the registry by its name."""
+    # Ensure they are loaded
+    import rriq.filters.classical  # noqa: F401
+    import rriq.filters.wrappers  # noqa: F401
+
     if name.lower() not in FILTER_REGISTRY:
         raise KeyError(
             f"Filter '{name}' not found. Available: {list(FILTER_REGISTRY.keys())}"

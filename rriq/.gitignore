@@ -39,3 +39,6 @@ models/*
 !models/.gitkeep
 test_env/
 .venv/
+.pytest_cache
+__pycache__
+*.pyc
