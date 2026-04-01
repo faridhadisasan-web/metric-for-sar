@@ -37,3 +37,5 @@ data/synthetic_clean/*
 !data/synthetic_clean/.gitkeep
 models/*
 !models/.gitkeep
+test_env/
+.venv/

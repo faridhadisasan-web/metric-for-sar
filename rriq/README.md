@@ -17,10 +17,16 @@ RRIQ evaluates despeckling filters by:
 ## Installation
 
 Ensure you have Python 3.11.
+Because `pyradiomics` relies heavily on C-extensions and `numpy`, it is highly recommended to install `numpy` before other dependencies.
 
 ```bash
 git clone https://github.com/rriq-authors/rriq.git
 cd rriq
+
+# Important: Install numpy before installing the package
+pip install "numpy<2.0"
+
+# Now install the project
 pip install -e ".[dev]"
 ```
 

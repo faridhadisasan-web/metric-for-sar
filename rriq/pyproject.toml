@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel", "numpy<2.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,7 +9,7 @@ description = "Radiomic Ratio-Image Quality Index for No-Clean-Reference SAR Des
 authors = [{name = "RRIQ Authors"}]
 requires-python = ">=3.11"
 dependencies = [
-    "numpy",
+    "numpy<2.0",
     "scipy",
     "pandas",
     "scikit-image",
